@@ -1,4 +1,4 @@
-import { Button, buttonVariants } from "@/components/ui/button";
+"use client";
 import Link from "next/link";
 import {
   DropdownMenu,
@@ -11,7 +11,8 @@ import {
   LoginLink,
   LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -20,9 +21,9 @@ const navLinks = [
 
 const menu = "/images/menu.png";
 
-const DropDown = async () => {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
+const DropDown = () => {
+  const { getUser } = useKindeBrowserClient();
+  const user = getUser();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import Blog from "@/lib/models/blogModel";
 import mongoose from "mongoose";
 import { uploadImageFromUrl, uploadLocalFile } from "@/lib/cloudinary";
+import { revalidatePath } from "next/cache";
 
 const { getUser } = getKindeServerSession();
 
@@ -51,7 +52,8 @@ async function createBlog(formData) {
     console.error("Error creating blog:", err);
     throw new Error("Failed to create blog");
   }
-
+  revalidatePath("/");
+  // revalidate the client side cache after every blog creation to get fresh data
   return redirect("/dashboard");
 }
 

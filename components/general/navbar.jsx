@@ -1,23 +1,23 @@
+"use client";
 import Link from "next/link";
 import {
   RegisterLink,
   LoginLink,
   LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
 import DropDown from "./dropDown";
-import { Geist } from "next/font/google";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
-const Navbar = async () => {
+const Navbar = () => {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/dashboard", label: "Dashboard" },
   ];
 
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
+  const { getUser } = useKindeBrowserClient();
+  const user = getUser();
 
   return (
     <nav className="   mb-4 flex gap-56 justify-center items-center w-[100%] relative pr-4 py-4 bg-gradient-to-r from-red-600 to-red-700 shadow shadow-gray-300">
