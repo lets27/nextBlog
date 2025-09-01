@@ -43,7 +43,8 @@ const Navbar = () => {
       <ul className="hidden md:flex flex-1 gap-16 justify-center items-center">
         {user
           ? navLinks.map((item) => {
-              const isActive = pathname === item.href; // 👈 check active
+              const isActive = pathname.startsWith(item.href);
+              //so that we can detect active link even in nested routes
               return (
                 <Link
                   href={item.href}

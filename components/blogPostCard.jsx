@@ -2,16 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const BlogPostCard = ({ post }) => {
-  const {
-    authorId,
-    _id,
-    title,
-    content,
-    image,
-    authorName,
-    authorImage,
-    createdAt,
-  } = post;
+  const { _id, title, content, image, authorName, authorImage, createdAt } =
+    post;
 
   return (
     <div
