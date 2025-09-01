@@ -46,6 +46,7 @@ const BlogPostCard = ({ post }) => {
                     alt={authorName}
                     fill
                     className="object-cover"
+                    priority
                   />
                 </div>
               )}
