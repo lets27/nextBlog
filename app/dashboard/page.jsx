@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
-import BlogList from "@/components/blogList";
+
 import { fetchUserBlogs } from "../actions";
+import BlogListWrapper from "@/components/bloglistWrapper";
 
 const DashoardRoute = async () => {
   const blogs = await fetchUserBlogs();
@@ -23,7 +23,7 @@ const DashoardRoute = async () => {
         </Link>
       </div>
 
-      <BlogList blogs={blogs} />
+      <BlogListWrapper blogsPromise={blogs} />
     </>
   );
 };

@@ -25,25 +25,34 @@ const Navbar = () => {
   return (
     <nav className="mb-4 flex gap-56 justify-center items-center w-full relative pr-4 py-4 bg-gradient-to-r from-red-600 to-red-700 shadow shadow-gray-300">
       {/* Logo + tagline */}
+
       <div className="flex items-center gap-5 md:gap-3">
-        <div className="h-16 w-22 md:h-20 md:w-22 relative overflow-hidden">
-          <Image
-            src="https://1000logos.net/wp-content/uploads/2023/05/EA-Sports-Logo.png"
-            alt="logo"
-            fill
-            className="object-cover "
-          />
-        </div>
-        <span className="text-2xl md:text-3xl font-extrabold tracking-tight text-white drop-shadow-sm">
-          World <span className="text-yellow-300">Sports</span>
-        </span>
+        <Link href="/" className="flex items-center gap-5 md:gap-3">
+          <div className="h-16 w-22 md:h-20 md:w-22 relative overflow-hidden">
+            <Image
+              src="https://1000logos.net/wp-content/uploads/2023/05/EA-Sports-Logo.png"
+              alt="logo"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <span className="text-2xl md:text-3xl font-extrabold tracking-tight text-white drop-shadow-sm">
+            World <span className="text-yellow-300">Sports</span>
+          </span>
+        </Link>
       </div>
 
       {/* Nav links */}
       <ul className="hidden md:flex flex-1 gap-16 justify-center items-center">
         {user
           ? navLinks.map((item) => {
-              const isActive = pathname.startsWith(item.href);
+              const isActive =
+                item.href === "/dashboard"
+                  ? pathname === "/dashboard"
+                  : item.href === "/"
+                  ? pathname === "/"
+                  : pathname === item.href;
+
               //so that we can detect active link even in nested routes
               return (
                 <Link
