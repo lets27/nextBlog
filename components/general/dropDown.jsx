@@ -27,11 +27,12 @@ const DropDown = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <img src={menu} width={25} height={32} alt="menu" />
+        <img src={menu} width={40} height={40} alt="menu" />
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="min-w-[200px] z-50 absolute"
-        align="start"
+        className="min-w-[200px] z-50"
+        align="end" // aligns menu to the right edge of trigger
+        sideOffset={8} // adds spacing from the trigger
       >
         {navLinks.map((item) => (
           <DropdownMenuItem asChild key={item.href}>

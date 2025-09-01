@@ -14,8 +14,8 @@ html {
 body {
   overflow-y: scroll; /* ensures consistent scrollbar even if content is short */
   margin: 0;
+
   padding: 0;
-  padding: 10px;
 }
 
 @custom-variant dark (&:is(.dark *));
